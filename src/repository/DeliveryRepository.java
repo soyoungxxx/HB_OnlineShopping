@@ -13,7 +13,7 @@ public class DeliveryRepository implements Service<Delivery_list, String> {
     public void update() {
 
     }
-    public void delete() {
+    public void delete(String id) {
 
     }
 }

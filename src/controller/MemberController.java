@@ -18,8 +18,8 @@ public class MemberController {
     public void update(int member_no, String col, String change) {
 
     }
-    public void delete(Member mem) {
-
+    public void delete(String id) {
+        mr.delete(id);
     }
     public void read(Member mem) {
         if (mem == null) {

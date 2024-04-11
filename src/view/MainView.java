@@ -50,11 +50,11 @@ public class MainView {
 
         if (id.equals("admin")) {
             AdminView adv = new AdminView();
+            adv.start();
         }
         else {
             UserView usv = new UserView(id);
         }
-        // 유효성 검사 메소드 호출 -> true 반환 될 때까지 반복 -> admin/user 확인 후 객체 생성
     }
 
     private void printMain() {

@@ -3,7 +3,7 @@ package controller;
 import domain.Item;
 import repository.Service;
 
-public class ProductController {
+public class ItemController {
     private Service service;
 
     public void create(Item item) {

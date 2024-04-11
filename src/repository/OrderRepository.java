@@ -13,7 +13,7 @@ public class OrderRepository implements Service<Order_list, String> {
     public void update() {
 
     }
-    public void delete() {
+    public void delete(String id) {
 
     }
 }

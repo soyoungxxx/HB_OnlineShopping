@@ -59,8 +59,16 @@ public class MemberRepository implements Service<Member, String> {
     public void update() {
 
     }
-    public void delete() {
-
+    public void delete(String id) {
+        try {
+            String sql = "DELETE FROM MEMBER WHERE ID = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.executeQuery();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public String login(String id, String pwd) {

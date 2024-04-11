@@ -13,7 +13,7 @@ public class ItemRepository implements Service<Item, String> {
     public void update() {
 
     }
-    public void delete() {
+    public void delete(String id) {
 
     }
 }
