@@ -2,7 +2,7 @@ package domain;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Data
 public class Delivery_list {

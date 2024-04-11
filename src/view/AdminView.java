@@ -12,6 +12,7 @@ public class AdminView {
     private MemberManagementView mmv = new MemberManagementView();
     private OrderManagementView omv = new OrderManagementView();
     private ItemManagementView imv = new ItemManagementView();
+    private DeliveryManagementView dmv = new DeliveryManagementView();
 
     public void start() {
         System.out.println("관리자 계정으로 로그인하셨습니다.");
@@ -48,7 +49,7 @@ public class AdminView {
             switch(category) {
                 case 1 -> mmv.manageMember();
                 case 2 -> omv.manageOrder();
-                case 3 -> manageDelivery();
+                case 3 -> dmv.manageDelivery();
                 case 4 -> imv.manageItem();
             }
         }
