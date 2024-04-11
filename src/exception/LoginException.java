@@ -13,7 +13,7 @@ public class LoginException extends Exception {
     }
 
     public static void isRightAccount(String id, String pwd, MemberController mc) {
-        if (mc.loginController(id, pwd).isEmpty()) {
+        if (mc.loginController(id, pwd) == null) {
             throw new IllegalArgumentException(WRONG_ACCOUNT_ERROR);
         }
     }
