@@ -3,7 +3,7 @@ package controller;
 import domain.Delivery_list;
 import repository.Service;
 
-public class DeliveryController implements Controller<Delivery_list> {
+public class DeliveryController {
     private Service service;
 
     public void create(Delivery_list dl) {

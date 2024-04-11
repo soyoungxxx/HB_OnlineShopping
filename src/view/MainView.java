@@ -2,6 +2,7 @@ package view;
 
 import controller.MemberController;
 import exception.LoginException;
+import util.DBConn;
 
 import java.util.Scanner;
 public class MainView {
@@ -30,6 +31,7 @@ public class MainView {
 
         if (num == 2) {
             System.out.println("프로그램을 종료합니다.");
+            DBConn.close();
             return;
         }
 
@@ -50,7 +52,7 @@ public class MainView {
             AdminView adv = new AdminView();
         }
         else {
-            UserView usv = new UserView();
+            UserView usv = new UserView(id);
         }
         // 유효성 검사 메소드 호출 -> true 반환 될 때까지 반복 -> admin/user 확인 후 객체 생성
     }

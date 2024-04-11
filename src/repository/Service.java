@@ -1,8 +1,8 @@
 package repository;
 
-public interface Service<K> {
+public interface Service<K, T> {
     public void create(K k);
-    public void read();
+    public void read(T t);
     public void update();
     public void delete();
 }
