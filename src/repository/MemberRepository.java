@@ -55,9 +55,57 @@ public class MemberRepository implements Service<Member, String> {
                 e.printStackTrace();
             }
         }
+        else {
+            try {
+                String sql = "SELECT * FROM MEMBER WHERE ID = ?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, id);
+                ResultSet rs = pstmt.executeQuery();
+                while(rs.next()) {
+                    Member mem = new Member();
+                    mem.setMember_no(rs.getInt("member_no"));
+                    mem.setName(rs.getString("name"));
+                    mem.setId(rs.getString("id"));
+                    mem.setPassword(rs.getString("password"));
+                    mem.setTel(rs.getString("tel"));
+                    System.out.printf("%3d%6s%10s%18s%18s\n",
+                            mem.getMember_no(),
+                            mem.getName(),
+                            mem.getId(),
+                            mem.getPassword(),
+                            mem.getTel());
+                }
+                rs.close();
+                pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
-    public void update(Member member, String str) {
-
+    public void update(Member member, String id) {
+        try {
+            String sql = "" +
+                    "UPDATE MEMBER SET NAME = NVL2(?, ?, NAME)," +
+                    "ID = NVL2(?, ?, ID)," +
+                    "PASSWORD = NVL2(?, ?, PASSWORD)," +
+                    "TEL = NVL2(?, ?, TEL)" +
+                    "WHERE ID = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, member.getName());
+            pstmt.setString(2, member.getName());
+            pstmt.setString(3, member.getId());
+            pstmt.setString(4, member.getId());
+            pstmt.setString(5, member.getPassword());
+            pstmt.setString(6, member.getPassword());
+            pstmt.setString(7, member.getTel());
+            pstmt.setString(8, member.getTel());
+            pstmt.setString(9, id);
+            pstmt.executeUpdate();
+            pstmt.close();
+            System.out.println("회원 정보를 수정했습니다.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void delete(String id) {
         try {

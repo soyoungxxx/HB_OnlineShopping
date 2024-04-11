@@ -2,10 +2,16 @@ package controller;
 
 import domain.Member;
 import repository.MemberRepository;
+import util.DBConn;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class MemberController {
     private MemberRepository mr = new MemberRepository();
     Member mem = new Member();
+
     public void create(String name, String id, String pwd, String tel) {
         mem.setName(name);
         mem.setId(id);
@@ -15,16 +21,19 @@ public class MemberController {
 
         mr.create(mem);
     }
-    public void update(int member_no, String col, String change) {
+    public void update(String id, String[] col) {
+        mem.setName(col[0]);
+        mem.setId(col[1]);
+        mem.setPassword(col[2]);
+        mem.setTel(col[3]);
 
+        mr.update(mem, id);
     }
     public void delete(String id) {
         mr.delete(id);
     }
-    public void read(Member mem) {
-        if (mem == null) {
-            mr.read(null);
-        }
+    public void read(String id) {
+        mr.read(id);
     }
 
     public String loginController(String id, String pwd) {

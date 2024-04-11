@@ -1,7 +1,6 @@
 package repository;
 
 import domain.Delivery_list;
-import domain.Member;
 import util.DBConn;
 
 import java.sql.Connection;
@@ -42,7 +41,8 @@ public class DeliveryRepository implements Service<Delivery_list, String> {
                     deliveryList.setMember_no(rs.getInt("member_no"));
                     deliveryList.setAddress(rs.getString("address"));
                     deliveryList.setDeli_date(rs.getDate("deli_date"));
-                    System.out.printf("%3d%3s%3s%15s%15s\n",
+                    System.out.printf("%-7s%-7s%-7s%-15s%-15s\n", "배송번호", "주문번호", "회원번호", "주소", "배송날짜");
+                    System.out.printf("%-9s%-9s%-7s%-15s%-15s\n",
                             deliveryList.getDeli_no(),
                             deliveryList.getOrder_no(),
                             deliveryList.getMember_no(),

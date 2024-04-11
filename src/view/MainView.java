@@ -3,6 +3,8 @@ package view;
 import controller.MemberController;
 import exception.LoginException;
 import util.DBConn;
+import view.admin.AdminView;
+import view.user.UserView;
 
 import java.util.Scanner;
 public class MainView {

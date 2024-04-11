@@ -1,4 +1,4 @@
-package view;
+package view.admin;
 
 import controller.ItemController;
 import controller.MemberController;

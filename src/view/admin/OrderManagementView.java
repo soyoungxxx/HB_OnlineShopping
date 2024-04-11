@@ -1,4 +1,4 @@
-package view;
+package view.admin;
 
 import controller.MemberController;
 import exception.AdminException;

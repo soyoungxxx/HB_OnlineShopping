@@ -1,30 +1,32 @@
-package view;
+package view.user;
 
-import java.util.Scanner;
-
-import controller.MemberController;
 import domain.Item;
 import exception.AdminException;
 import util.DBConn;
+import view.MainView;
 
-public class AdminView {
+import java.util.Scanner;
+
+public class UserView {
     private static Scanner sc = new Scanner(System.in);
-    private MemberManagementView mmv = new MemberManagementView();
-    private OrderManagementView omv = new OrderManagementView();
-    private ItemManagementView imv = new ItemManagementView();
-    private DeliveryManagementView dmv = new DeliveryManagementView();
+    private String id;
 
-    public void start() {
-        System.out.println("관리자 계정으로 로그인하셨습니다.");
-        selectCategory();
+    private MemberUserView member = new MemberUserView();
+    private ItemUserView item = new ItemUserView();
+    private OrderUserView order = new OrderUserView();
+    private DeliveryUserView deliver = new DeliveryUserView();
+
+    public UserView(String id) {
+        this.id = id;
     }
 
     public void selectCategory() {
+        int flag = 0;
         while(true) {
             System.out.println();
             System.out.println("진행할 카테고리를 선택해주세요.");
             System.out.println("---------------------------------------------------------------");
-            System.out.println("1. 회원 관리 | 2. 주문 관리 | 3. 배송 관리 | 4. 상품 관리 | 5. 종료");
+            System.out.println("1. 내 정보 관리 | 2. 주문 목록 | 3. 배송 목록 | 4. 상품 조회 | 5. 종료");
             System.out.println("---------------------------------------------------------------");
 
             int category = 0;
@@ -47,19 +49,18 @@ public class AdminView {
                 break;
             }
             switch(category) {
-                case 1 -> mmv.manageMember();
-                case 2 -> omv.manageOrder();
-                case 3 -> dmv.manageDelivery();
-                case 4 -> imv.manageItem();
+                case 1 -> flag = member.memberUser(id);
+                case 2 -> order.manageOrder();
+                case 3 -> deliver.manageDelivery();
+                case 4 -> item.manageItem();
             }
+            if (flag == 1) break;
+        }
+        if (flag == 1) {
+            MainView m = new MainView();
+            m.displayLoginMenu();
         }
     }
 
-    private void manageDelivery() {
 
-    }
-
-    private void manageItem() {
-
-    }
 }
