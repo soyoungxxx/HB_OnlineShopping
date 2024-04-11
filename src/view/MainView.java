@@ -25,7 +25,7 @@ public class MainView {
             try {
                 System.out.println("로그인하시려면 1번, 회원가입은 2번, 종료하시려면 3번을 입력해주세요.");
                 num = Integer.parseInt(sc.nextLine());
-                LoginException.isRigthNumber(num);
+                LoginException.isRightNumber(num);
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("숫자가 아닙니다. 다시 입력해주세요.");

@@ -59,11 +59,24 @@
 ## 💻 프로그래밍 요구 사항
 ### 객체 지향 프로그래밍
 인터페이스를 통한 다형성 구현
+
 ![img.png](resource_img/img3.png)
 
+✏️ create, read, update, delete 총 네 가지의 같은 기능을 수행하는 클래스들이 하나의 인터페이스(Service)를 상속받도록 했다.
 
-디자인 패턴 : DB CONNECTOR를 싱글톤 객체로 활용
+``` java
+class MemberRepository implements Service<K k, T t>
+...
+Service service = new MemberRepository();
+```
+✏️ 제네릭도 활용하였다!
 
-예외 처리 : 입력 예외를 받기 위해 커스텀 예제 생성
+### 디자인 패턴
+```
+DBConn 클래스를 싱글톤 객체로 활용
+```
 
-주제 : 로그인 기능이 포함된 인터넷 쇼핑몰
+### 예외 처리
+입력 예외를 처리하기 위해 커스텀 예제를 만들어 처리했다.
+
+
