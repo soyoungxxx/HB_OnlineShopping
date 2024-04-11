@@ -15,7 +15,7 @@ public class MemberController {
 
         mr.create(mem);
     }
-    public void update(Member mem) {
+    public void update(int member_no, String col, String change) {
 
     }
     public void delete(Member mem) {
