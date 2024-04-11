@@ -15,4 +15,10 @@ public class AdminException {
             throw new IllegalArgumentException(MANAGE_ERROR);
         }
     }
+
+    public static void isRightManageOrder(int number) {
+        if (number < 1 || number > 3) {
+            throw new IllegalArgumentException(MANAGE_ERROR);
+        }
+    }
 }

@@ -13,7 +13,7 @@ public class MemberManagementView {
         System.out.println();
         System.out.println("진행할 작업을 선택해주세요.");
         System.out.println("---------------------------------------------------------------");
-        System.out.println("1. 회원 추가 | 2. 회원 조회  | 3. 회원 수정 | 4. 회원 삭제 | 5. 뒤로 가기");
+        System.out.println("1. 회원 조회 | 2. 회원 추가  | 3. 회원 수정 | 4. 회원 삭제 | 5. 뒤로 가기");
         System.out.println("---------------------------------------------------------------");
 
         int num = 0;
@@ -33,8 +33,8 @@ public class MemberManagementView {
         if (num == 5) return;
 
         switch (num) {
-            case 1 -> createMem();
-            case 2 -> readMem();
+            case 1 -> readMem();
+            case 2 -> createMem();
             case 3 -> updateMem();
             case 4 -> deleteMem();
         }

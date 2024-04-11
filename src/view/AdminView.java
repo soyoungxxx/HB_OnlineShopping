@@ -3,12 +3,16 @@ package view;
 import java.util.Scanner;
 
 import controller.MemberController;
+import domain.Item;
 import exception.AdminException;
 import util.DBConn;
 
 public class AdminView {
     private static Scanner sc = new Scanner(System.in);
     private MemberManagementView mmv = new MemberManagementView();
+    private OrderManagementView omv = new OrderManagementView();
+    private ItemManagementView imv = new ItemManagementView();
+
     public void start() {
         System.out.println("관리자 계정으로 로그인하셨습니다.");
         selectCategory();
@@ -43,17 +47,11 @@ public class AdminView {
             }
             switch(category) {
                 case 1 -> mmv.manageMember();
-                case 2 -> manageOrder();
+                case 2 -> omv.manageOrder();
                 case 3 -> manageDelivery();
-                case 4 -> manageItem();
+                case 4 -> imv.manageItem();
             }
         }
-    }
-
-
-
-    private void manageOrder() {
-
     }
 
     private void manageDelivery() {

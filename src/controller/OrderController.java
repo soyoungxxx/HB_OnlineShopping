@@ -1,10 +1,11 @@
 package controller;
 
 import domain.Order_list;
+import repository.OrderRepository;
 import repository.Service;
 
 public class OrderController {
-    private Service service;
+    private Service service = new OrderRepository();
 
     public void create(Order_list ol) {
 
@@ -19,6 +20,6 @@ public class OrderController {
     }
 
     public void read(Order_list ol) {
-
+        service.read(ol);
     }
 }

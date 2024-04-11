@@ -56,7 +56,7 @@ public class MemberRepository implements Service<Member, String> {
             }
         }
     }
-    public void update() {
+    public void update(Member member, String str) {
 
     }
     public void delete(String id) {
