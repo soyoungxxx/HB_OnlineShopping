@@ -13,20 +13,23 @@ public class DeliveryController {
     public void create(int order_no, String address, String date) {
         deliveryList.setOrder_no(order_no);
         deliveryList.setAddress(address);
-        deliveryList.setDeli_date(Date.valueOf(date));
+        deliveryList.setDel_date(Date.valueOf(date));
 
         service.create(deliveryList);
     }
 
-    public void update(Delivery_list dl) {
-
+    public void update(String address, String id, int order_no) {
+        deliveryList.setAddress(address);
+        deliveryList.setId(id);
+        deliveryList.setOrder_no(order_no);
+        service.update(deliveryList, id);
     }
 
     public void delete(Delivery_list dl) {
 
     }
 
-    public void read(Delivery_list dl) {
-        service.read(dl);
+    public void read(String id) {
+        service.read(id);
     }
 }

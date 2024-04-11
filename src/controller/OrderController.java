@@ -7,8 +7,12 @@ import repository.Service;
 public class OrderController {
     private Service service = new OrderRepository();
 
-    public void create(String item_name, int qunatity) {
-
+    public void create(int item_no, int quantity, String id) {
+        Order_list orderList = new Order_list();
+        orderList.setQuantity(quantity);
+        orderList.setItem_no(item_no);
+        orderList.setId(id);
+        service.create(orderList);
     }
 
     public void update(Order_list ol) {
@@ -19,7 +23,7 @@ public class OrderController {
 
     }
 
-    public void read(Order_list ol) {
-        service.read(ol);
+    public void read(String id) {
+        service.read(id);
     }
 }

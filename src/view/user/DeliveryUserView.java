@@ -1,5 +1,6 @@
 package view.user;
 
+import controller.DeliveryController;
 import controller.ItemController;
 import exception.AdminException;
 
@@ -7,13 +8,15 @@ import java.util.Scanner;
 
 public class DeliveryUserView {
     private Scanner sc = new Scanner(System.in);
-    private ItemController itemController = new ItemController();
+    private DeliveryController deliveryController = new DeliveryController();
+    private String id;
 
-    public void deliveryUser() {
+    public void deliveryUser(String id) {
+        this.id = id;
         System.out.println();
         System.out.println("진행할 작업을 선택해주세요.");
         System.out.println("----------------------------------------------------------------------");
-        System.out.println("1. 상품 목록 | 2. 상품 정보 수정  | 3. 상품 추가 | 4. 상품 삭제 | 5. 뒤로 가기");
+        System.out.println("1. 배송 조회 | 2. 주소 수정 | 3. 뒤로 가기");
         System.out.println("----------------------------------------------------------------------");
 
         int num = 0;
@@ -30,46 +33,27 @@ public class DeliveryUserView {
             }
         }
 
-        if (num == 5) return;
-
-        switch (num) {
-            case 1 -> readItem();
-            case 2 -> updateItem();
-            case 3 -> createItem();
-            case 4 -> deleteItem();
-        }
+        if (num == 1) readDelivery();
+        else if (num == 2) updateAddress();
+        return;
     }
 
-    private void readItem() {
-        itemController.read(null);
+    private void readDelivery() {
+        deliveryController.read(id);
     }
 
-    private void updateItem() {
-        String item_name;
-        String[] temp;
-        String[] col = new String[4];
-        String[] change = new String[4];
+    private void updateAddress() {
+        String address;
+        int order_no;
         System.out.println();
-        System.out.println("!! 한 번에 한 항목만 수정하실 수 있습니다 !!");
-        System.out.println("수정할 상품의 이름을 입력해주세요.");
-        System.out.print("상품명 >> ");
-        item_name = sc.nextLine();
-        System.out.println("수정하실 항목을 입력해주세요. (상품명, 가격)");
-        System.out.println("수정하지 않을 항목은 적지 말아주세요. ex) 상품명");
-        System.out.print("항목 >> ");
-        temp = sc.nextLine().split(", ");
+        System.out.println("주소를 변경할 주문의 주문 번호를 입력해주세요.");
+        System.out.print("주문 번호 >> ");
+        order_no = Integer.parseInt(sc.nextLine());
 
-        System.out.println("변경하실 내용을 입력해주세요. (변경내용1, 변경내용2, ...)");
-        System.out.print("변경 내용 >> ");
-        change = sc.nextLine().split(", ");
+        System.out.println("변경할 주소를 입력해주세요.");
+        System.out.print("새 주소 >> ");
+        address = sc.nextLine();
 
-        for (int i = 0; i < temp.length; i++) {
-            switch (temp[i]) {
-                case "상품명" -> col[0] = change[i];
-                case "가격" -> col[1] = change[i];
-            }
-        }
-
-        itemController.update(item_name, col);
+        deliveryController.update(address, id, order_no);
     }
 }

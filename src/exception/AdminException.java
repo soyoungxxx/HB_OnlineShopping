@@ -1,6 +1,6 @@
 package exception;
 
-public class AdminException {
+public class AdminException extends Exception {
     private final static String CATEGORY_ERROR = "잘못된 카테고리입니다. 다시 입력해주세요.";
     private final static String MANAGE_ERROR = "잘못된 작업입니다. 다시 입력해주세요.";
 

@@ -13,7 +13,7 @@ public class OrderManagementView {
         System.out.println();
         System.out.println("진행할 작업을 선택해주세요.");
         System.out.println("---------------------------------------------------------------");
-        System.out.println("1. 전체주문 조회 | 2. 상품별 통계 확인 | 3. 뒤로 가기");
+        System.out.println("1. 전체주문 조회 | 2. 뒤로 가기");
         System.out.println("---------------------------------------------------------------");
 
         int num = 0;
@@ -30,19 +30,11 @@ public class OrderManagementView {
             }
         }
 
-        if (num == 3) return;
-
-        switch (num) {
-            case 1 -> readOrder();
-            case 2 -> readOrderStatics();
-        }
+        if (num == 1) readOrder();
+        return;
     }
 
     private void readOrder() {
-        orderController.read(null);
-    }
-
-    private void readOrderStatics() {
         orderController.read(null);
     }
 }

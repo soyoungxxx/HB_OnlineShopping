@@ -17,9 +17,6 @@ public class ItemController {
         item.setItem_name(elements[0]);
         if (elements[1] != null) item.setPrice(Integer.parseInt(elements[1]));
         else item.setPrice(-1);
-        System.out.println(item.getItem_name());
-        System.out.println(item.getPrice());
-        System.out.println(item_name);
         service.update(item, item_name);
     }
 
@@ -27,7 +24,7 @@ public class ItemController {
         service.delete(name);
     }
 
-    public void read(Item item) {
+    public void read(String item) {
         service.read(item);
     }
 

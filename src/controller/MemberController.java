@@ -13,7 +13,7 @@ public class MemberController {
     Member mem = new Member();
 
     public void create(String name, String id, String pwd, String tel) {
-        mem.setName(name);
+        mem.setMember_name(name);
         mem.setId(id);
         mem.setPassword(pwd);
         if (tel.isEmpty()) mem.setTel(null);
@@ -22,7 +22,7 @@ public class MemberController {
         mr.create(mem);
     }
     public void update(String id, String[] col) {
-        mem.setName(col[0]);
+        mem.setMember_name(col[0]);
         mem.setId(col[1]);
         mem.setPassword(col[2]);
         mem.setTel(col[3]);

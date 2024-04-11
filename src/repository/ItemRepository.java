@@ -27,6 +27,8 @@ public class ItemRepository implements Service<Item, String> {
         }
     }
     public void read(String item_name) {
+        System.out.printf("\n%-3s%-15s%-10s\n", "No", "ITEM", "PRICE");
+        System.out.println("------------------------------------------------------------------");
         if (item_name == null) {
             try {
                 String sql = "SELECT * FROM ITEM";
@@ -37,7 +39,7 @@ public class ItemRepository implements Service<Item, String> {
                     item.setItem_no(rs.getInt("item_no"));
                     item.setItem_name(rs.getString("item_name"));
                     item.setPrice(rs.getInt("price"));
-                    System.out.printf("%3d%15s%10d\n",
+                    System.out.printf("%-3s%-15s%-10s\n",
                             item.getItem_no(),
                             item.getItem_name(),
                             item.getPrice());
@@ -63,6 +65,7 @@ public class ItemRepository implements Service<Item, String> {
                 pstmt.setString(4,"PRICE");
             }
             else {
+                pstmt.setInt(3,item.getPrice());
                 pstmt.setInt(4,item.getPrice());
             }
             pstmt.setString(5, item_name);

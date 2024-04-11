@@ -13,6 +13,7 @@ public class AdminView {
     private DeliveryManagementView dmv = new DeliveryManagementView();
 
     public void start() {
+        System.out.println();
         System.out.println("관리자 계정으로 로그인하셨습니다.");
         selectCategory();
     }
@@ -20,7 +21,7 @@ public class AdminView {
     public void selectCategory() {
         while(true) {
             System.out.println();
-            System.out.println("진행할 카테고리를 선택해주세요.");
+            System.out.println("카테고리를 선택해주세요.");
             System.out.println("---------------------------------------------------------------");
             System.out.println("1. 회원 관리 | 2. 주문 관리 | 3. 배송 관리 | 4. 상품 관리 | 5. 종료");
             System.out.println("---------------------------------------------------------------");

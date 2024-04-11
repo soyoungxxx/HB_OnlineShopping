@@ -18,6 +18,13 @@ public class UserView {
 
     public UserView(String id) {
         this.id = id;
+        start();
+    }
+
+    private void start() {
+        System.out.println();
+        System.out.printf("%s님, 반갑습니다.", id);
+        selectCategory();
     }
 
     public void selectCategory() {
@@ -58,7 +65,7 @@ public class UserView {
         }
         if (flag == 1) {
             MainView m = new MainView();
-            m.displayLoginMenu();
+            m.start();
         }
     }
 

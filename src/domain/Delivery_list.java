@@ -8,7 +8,7 @@ import java.sql.Date;
 public class Delivery_list {
     private int deli_no;
     private String address;
-    private Date deli_date;
+    private Date del_date;
     private int order_no;
-    private int member_no;
+    private String id;
 }

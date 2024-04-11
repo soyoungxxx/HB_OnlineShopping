@@ -1,7 +1,6 @@
 <component name="libraryTable">
   <library name="json-20240303">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../json-20240303.jar!/" />
       <root url="jar://$PROJECT_DIR$/../lombok.jar!/" />
       <root url="jar://$PROJECT_DIR$/../ojdbc11-23.3.0.23.09.jar!/" />
     </CLASSES>

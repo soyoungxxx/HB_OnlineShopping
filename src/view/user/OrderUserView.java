@@ -1,6 +1,5 @@
 package view.user;
 
-import controller.DeliveryController;
 import controller.OrderController;
 import exception.AdminException;
 
@@ -11,13 +10,14 @@ public class OrderUserView {
     private OrderController orderController = new OrderController();
 
     private String id;
+    private int member_no;
 
     public void orderUser(String id) {
         this.id = id;
         System.out.println();
         System.out.println("진행할 작업을 선택해주세요.");
         System.out.println("----------------------------------------------------------------------");
-        System.out.println("1. 배송 조회 | 2. 배송 접수 | 3. 뒤로 가기");
+        System.out.println("1. 주문하기 | 2. 주문 조회 | 3. 뒤로 가기");
         System.out.println("----------------------------------------------------------------------");
 
         int num = 0;
@@ -37,28 +37,26 @@ public class OrderUserView {
         if (num == 3) return;
 
         switch (num) {
-            case 1 -> readDelivery();
-            case 2 -> createDelivery();
+            case 1 -> createOrder();
+            case 2 -> readOrder();
         }
     }
 
-    private void createDelivery() {
-        String address, date;
-        int order_no;
+    private void createOrder() {
+        int item_no;
+        int quantity;
 
         System.out.println();
-        System.out.println("추가할 데이터를 입력해주세요.");
-        System.out.print("주문 번호 >> ");
-        order_no = Integer.parseInt(sc.nextLine());
-        System.out.print("주소 >> ");
-        address = sc.nextLine();
-        System.out.print("배송 날짜 >> ");
-        date = sc.nextLine();
+        System.out.println("주문할 상품 정보를 입력해주세요.");
+        System.out.print("상품 번호 >> ");
+        item_no= Integer.parseInt(sc.nextLine());
+        System.out.print("수량 >> ");
+        quantity = Integer.parseInt(sc.nextLine());
 
-        orderController.create(order_no, address, date);
+        orderController.create(item_no, quantity, id);
     }
 
-    private void readDelivery() {
-        orderController.read(null);
+    private void readOrder() {
+        orderController.read(id);
     }
 }

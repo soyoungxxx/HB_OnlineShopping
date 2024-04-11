@@ -12,13 +12,13 @@ public class MemberRepository implements Service<Member, String> {
     private Connection conn = DBConn.getConnection();
 
     public void create(Member mem) {
-        try {
+        try { // 회원가입 구현
             String sql = "" +
-                    "INSERT INTO member (member_no, name, id, password, tel) " +
-                    "VALUES (SEQ_MEM.NEXTVAL, ?, ?, ?, ?)";
+                    "INSERT INTO member (id, member_name, password, tel) " +
+                    "VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, mem.getName());
-            pstmt.setString(2, mem.getId());
+            pstmt.setString(1, mem.getId());
+            pstmt.setString(2, mem.getMember_name());
             pstmt.setString(3, mem.getPassword());
             pstmt.setString(4, mem.getTel());
             pstmt.executeUpdate();
@@ -26,10 +26,12 @@ public class MemberRepository implements Service<Member, String> {
 
             System.out.println("회원 정보를 추가했습니다.");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("이미 존재하는 아이디입니다. 다시 시도해주세요.");
         }
     }
     public void read(String id) {
+        System.out.printf("\n%-8s%-10s%-18s%-18s\n", "NAME", "ID", "PWD", "TEL");
+        System.out.println("-------------------------------------------------------");
         if (id == null) {
             try {
                 String sql = "SELECT * FROM MEMBER";
@@ -37,14 +39,12 @@ public class MemberRepository implements Service<Member, String> {
                 ResultSet rs = pstmt.executeQuery();
                 while(rs.next()) {
                     Member mem = new Member();
-                    mem.setMember_no(rs.getInt("member_no"));
-                    mem.setName(rs.getString("name"));
+                    mem.setMember_name(rs.getString("member_name"));
                     mem.setId(rs.getString("id"));
                     mem.setPassword(rs.getString("password"));
                     mem.setTel(rs.getString("tel"));
-                    System.out.printf("%3d%6s%10s%18s%18s\n",
-                            mem.getMember_no(),
-                            mem.getName(),
+                    System.out.printf("%-6s%-10s%-18s%-18s\n",
+                            mem.getMember_name(),
                             mem.getId(),
                             mem.getPassword(),
                             mem.getTel());
@@ -63,14 +63,12 @@ public class MemberRepository implements Service<Member, String> {
                 ResultSet rs = pstmt.executeQuery();
                 while(rs.next()) {
                     Member mem = new Member();
-                    mem.setMember_no(rs.getInt("member_no"));
-                    mem.setName(rs.getString("name"));
+                    mem.setMember_name(rs.getString("member_name"));
                     mem.setId(rs.getString("id"));
                     mem.setPassword(rs.getString("password"));
                     mem.setTel(rs.getString("tel"));
-                    System.out.printf("%3d%6s%10s%18s%18s\n",
-                            mem.getMember_no(),
-                            mem.getName(),
+                    System.out.printf("%-6s%-10s%-18s%-18s\n",
+                            mem.getMember_name(),
                             mem.getId(),
                             mem.getPassword(),
                             mem.getTel());
@@ -85,14 +83,14 @@ public class MemberRepository implements Service<Member, String> {
     public void update(Member member, String id) {
         try {
             String sql = "" +
-                    "UPDATE MEMBER SET NAME = NVL2(?, ?, NAME)," +
+                    "UPDATE MEMBER SET MEMBER_NAME = NVL2(?, ?, MEMBER_NAME)," +
                     "ID = NVL2(?, ?, ID)," +
                     "PASSWORD = NVL2(?, ?, PASSWORD)," +
                     "TEL = NVL2(?, ?, TEL)" +
                     "WHERE ID = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, member.getName());
-            pstmt.setString(2, member.getName());
+            pstmt.setString(1, member.getMember_name());
+            pstmt.setString(2, member.getMember_name());
             pstmt.setString(3, member.getId());
             pstmt.setString(4, member.getId());
             pstmt.setString(5, member.getPassword());

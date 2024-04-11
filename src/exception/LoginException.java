@@ -7,7 +7,7 @@ public class LoginException extends Exception {
     private final static String WRONG_ACCOUNT_ERROR = "아이디 혹은 비밀번호가 틀립니다. 다시 시도해주세요.";
 
     public static void isRigthNumber(int number) {
-        if (number != 1 && number != 2) {
+        if (number != 1 && number != 2 && number != 3) {
             throw new IllegalArgumentException(WRONG_NUMBER_ERROR);
         }
     }
