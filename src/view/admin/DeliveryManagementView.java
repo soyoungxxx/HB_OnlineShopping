@@ -13,7 +13,7 @@ public class DeliveryManagementView {
         System.out.println();
         System.out.println("진행할 작업을 선택해주세요.");
         System.out.println("----------------------------------------------------------------------");
-        System.out.println("1. 배송 조회 | 2. 배송 접수 | 3. 뒤로 가기");
+        System.out.println("1. 배송 조회 | 2. 주소 수정 | 3. 뒤로 가기");
         System.out.println("----------------------------------------------------------------------");
 
         int num = 0;

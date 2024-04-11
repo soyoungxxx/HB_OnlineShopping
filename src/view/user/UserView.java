@@ -26,7 +26,7 @@ public class UserView {
             System.out.println();
             System.out.println("진행할 카테고리를 선택해주세요.");
             System.out.println("---------------------------------------------------------------");
-            System.out.println("1. 내 정보 관리 | 2. 주문 목록 | 3. 배송 목록 | 4. 상품 조회 | 5. 종료");
+            System.out.println("1. 내 정보 관리 | 2. 주문 | 3. 배송 조회 | 4. 상품 조회 | 5. 종료");
             System.out.println("---------------------------------------------------------------");
 
             int category = 0;
@@ -50,9 +50,9 @@ public class UserView {
             }
             switch(category) {
                 case 1 -> flag = member.memberUser(id);
-                case 2 -> order.manageOrder();
-                case 3 -> deliver.manageDelivery();
-                case 4 -> item.manageItem();
+                case 2 -> order.orderUser(id);
+                case 3 -> deliver.deliveryUser(id);
+                case 4 -> item.itemUser();
             }
             if (flag == 1) break;
         }

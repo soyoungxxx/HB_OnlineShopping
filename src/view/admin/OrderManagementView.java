@@ -1,6 +1,5 @@
 package view.admin;
 
-import controller.MemberController;
 import exception.AdminException;
 import controller.OrderController;
 
@@ -14,7 +13,7 @@ public class OrderManagementView {
         System.out.println();
         System.out.println("진행할 작업을 선택해주세요.");
         System.out.println("---------------------------------------------------------------");
-        System.out.println("1. 전체 주문 조회 | 2. 상품별 통계 확인 | 3. 뒤로 가기");
+        System.out.println("1. 전체주문 조회 | 2. 상품별 통계 확인 | 3. 뒤로 가기");
         System.out.println("---------------------------------------------------------------");
 
         int num = 0;

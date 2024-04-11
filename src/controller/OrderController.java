@@ -7,7 +7,7 @@ import repository.Service;
 public class OrderController {
     private Service service = new OrderRepository();
 
-    public void create(Order_list ol) {
+    public void create(String item_name, int qunatity) {
 
     }
 
