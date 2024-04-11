@@ -1,4 +1,4 @@
-package contolloer;
+package controller;
 
 import domain.Order_list;
 import repository.Service;

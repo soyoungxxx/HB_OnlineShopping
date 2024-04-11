@@ -1,4 +1,4 @@
-package contolloer;
+package controller;
 
 import domain.Item;
 import repository.Service;

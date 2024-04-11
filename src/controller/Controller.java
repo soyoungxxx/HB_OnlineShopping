@@ -1,4 +1,4 @@
-package contolloer;
+package controller;
 
 public interface Controller<T> {
     void create(T t);

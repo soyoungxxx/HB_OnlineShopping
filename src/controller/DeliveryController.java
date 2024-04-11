@@ -1,4 +1,4 @@
-package contolloer;
+package controller;
 
 import domain.Delivery_list;
 import repository.Service;

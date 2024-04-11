@@ -1,13 +1,12 @@
-package contolloer;
+package controller;
 
 import domain.Member;
 import repository.MemberRepository;
-import repository.Service;
 
 public class MemberController implements Controller<Member> {
-    private Service service = new MemberRepository();
+    private MemberRepository mr = new MemberRepository();
     public void create(Member mem) {
-        service.create(mem);
+        mr.create(mem);
     }
     public void update(Member mem) {
 
@@ -19,7 +18,7 @@ public class MemberController implements Controller<Member> {
 
     }
 
-    public void loginController(String id, String pwd) {
-        s
+    public String loginController(String id, String pwd) {
+        return mr.login(id, pwd);
     }
 }
