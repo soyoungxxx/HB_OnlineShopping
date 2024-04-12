@@ -82,7 +82,8 @@ Service service = new MemberRepository();
 
 ### 디자인 패턴
 ```
-DBConn 클래스를 싱글톤 객체로 활용
+1. DBConn 클래스를 싱글톤 객체로 활용
+2. DAO 패턴 사용
 ```
 
 ### 예외 처리
